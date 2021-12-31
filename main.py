@@ -49,6 +49,22 @@ class Board:
 
   def is_over(self):
 
+    # Check horizontal
+    current = 'x'
+    count = 0
+    for row in range(self.rows):
+      for col in range(self.cols):
+        if self.board[row][col] == " ":
+          continue
+        elif self.board[row][col] == current:
+          count += 1
+          if count == 4:
+            self.isover = True
+            return
+        else:
+          current = self.board[row][col]
+          count = 1
+
     self.isover = False
     return
 
