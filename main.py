@@ -4,6 +4,7 @@ class Board:
     self.rows = rows
     self.cols = columns
     self.board = [ [" "] * self.cols for _ in range(self.rows) ]
+    self.isfull = [False] * columns
 
   def __repr__(self):
 
@@ -29,10 +30,19 @@ class Board:
       print("Column out of bounds, please try again")
       return
 
-    for row in range(self.rows - 1, 0, -1):
+    if self.isfull[column]:
+      print("Column full, try again.")
+      return
+
+    for row in range(self.rows - 1, -1, -1):
       if self.board[row][column] == " ":
         self.board[row][column] = piece
+
+        if row == 0:
+          self.isfull[column] = True
+
         break
+
     print(self)
 
 board = Board(7, 6)
