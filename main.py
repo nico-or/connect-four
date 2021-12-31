@@ -5,6 +5,7 @@ class Board:
     self.cols = columns
     self.board = [ [" "] * self.cols for _ in range(self.rows) ]
     self.isfull = [False] * columns
+    self.isover = False
 
   def __repr__(self):
 
@@ -44,6 +45,12 @@ class Board:
         break
 
     print(self)
+    self.is_over()
+
+  def is_over(self):
+
+    self.isover = False
+    return
 
 board = Board(7, 6)
 print(board)
