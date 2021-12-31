@@ -20,6 +20,15 @@ class Board:
 
   def new_piece(self, column, piece):
     column -= 1
+
+    if piece not in 'xo':
+      print("Invalid piece marker, please use x or o")
+      return
+
+    if column not in range(self.cols):
+      print("Column out of bounds, please try again")
+      return
+
     for row in range(self.rows - 1, 0, -1):
       if self.board[row][column] == " ":
         self.board[row][column] = piece
