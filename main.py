@@ -65,6 +65,22 @@ class Board:
           current = self.board[row][col]
           count = 1
 
+    # Check vertical
+    current = 'x'
+    count = 0
+    for col in range(self.cols):
+      for row in range(self.rows):
+        if self.board[row][col] == " ":
+          continue
+        elif self.board[row][col] == current:
+          count += 1
+          if count == 4:
+            self.isover = True
+            return
+        else:
+          current = self.board[row][col]
+          count = 1
+
     self.isover = False
     return
 
