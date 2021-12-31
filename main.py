@@ -18,5 +18,13 @@ class Board:
       out += "|\n" + separator
     return out
 
+  def new_piece(self, column, piece):
+    column -= 1
+    for row in range(self.rows - 1, 0, -1):
+      if self.board[row][column] == " ":
+        self.board[row][column] = piece
+        break
+    print(self)
+
 board = Board(7, 6)
 print(board)
