@@ -50,9 +50,9 @@ class Board:
   def is_over(self):
 
     # Check horizontal
-    current = 'x'
-    count = 0
     for row in range(self.rows):
+      current = ''
+      count = 0
       for col in range(self.cols):
         if self.board[row][col] == " ":
           continue
@@ -66,9 +66,9 @@ class Board:
           count = 1
 
     # Check vertical
-    current = 'x'
-    count = 0
     for col in range(self.cols):
+      current = ''
+      count = 0
       for row in range(self.rows):
         if self.board[row][col] == " ":
           continue
