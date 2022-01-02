@@ -122,3 +122,32 @@ class Board:
 
 board = Board(7, 6)
 print(board)
+
+player = 2
+pieces = 'xo'
+
+# turn loop
+while not board.isover:
+  # change player
+  if player == 2:
+    player = 1
+  else:
+    player += 1
+
+  # get player input
+  while True:
+    try:
+      column = int(input(f"Player {player} ({pieces[player - 1]}) choose a column: "))
+    except ValueError:
+      print("Invalid value, try again.")
+      break
+    if column in range(1, board.cols + 1):
+      break
+    else:
+      print("Invalid column, try again.")
+
+  board.new_piece(column, pieces[player - 1])
+
+# end game
+print("Game over.")
+print(f"Player {player} wins!")
