@@ -81,8 +81,44 @@ class Board:
           current = self.board[row][col]
           count = 1
 
+    # Check diagonals
+    for row in range(self.rows):
+      for col in range(self.cols):
+        if self.board[row][col] == " ":
+          continue
+
+        if self.check_diagonals(row, col,'left') or self.check_diagonals(row, col,'right'):
+          self.isover = True
+          return
+
     self.isover = False
     return
+
+  def check_diagonals(self, row, col, direction):
+
+    char = self.board[row][col]
+
+    # lower left
+    if direction == 'left':
+      try:
+        for i in range(1,4):
+          if self.board[row + i][col - i] != char:
+            return False
+        return True
+      except IndexError:
+        return False
+
+    # lower right
+    if direction == 'right':
+      try:
+        for i in range(1,4):
+          if self.board[row + i][col + i] != char:
+            return False
+        return True
+      except IndexError:
+        return False
+
+    return False
 
 board = Board(7, 6)
 print(board)
